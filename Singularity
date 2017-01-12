@@ -1,12 +1,5 @@
-BootStrap: yum
-OSVersion: 7.2.1511
-MirrorURL: http://mirror.centos.org/centos-7/%{OSVERSION}/os/$basearch/
-Include: yum
-
-# If you want the updates (available at the bootstrap date) to be installed
-# inside the container during the bootstrap instead of the General Availability
-# point release (7.x) then uncomment the following line
-#UpdateURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/updates/$basearch/
+BootStrap: docker
+From: centos:latest
 
 
 %runscript
