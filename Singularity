@@ -1,24 +1,16 @@
 BootStrap: docker
-From: centos:latest
-
+From: tensorflow/tensorflow:latest 
+IncludeCmd: yes
 
 %runscript
-    echo "This is what happens when you run the container..."
-
+    exec /usr/bin/python "$@"
 
 %post
-    export EASYBUILD_VERSION="3.0.2"
-    yum -y install gcc
-    yum -y install make
-    yum -y install openssl-devel
-    yum -y install libibverbs-devel
-    yum -y install tar bzip2 gzip unzip
-    yum -y install which
-    yum -y install epel-release
-    yum -y install python-pip
-    yum -y install Lmod
-    yum -y install python-setuptools
-    yum -y install git
-    yum -y install vim
-    pip install easybuild==$EASYBUILD_VERSION
+    apt-get update && apt-get -y upgrade
+    apt-get install vim
+    apt-get install git
+
+%test
+    # This runs usually less then 30 minutes depending on your host type
+    python -m tensorflow.models.image.mnist.convolutional
 
