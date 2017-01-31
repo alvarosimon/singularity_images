@@ -19,5 +19,6 @@ From: centos:latest
     yum -y install Lmod
     yum -y install python-setuptools
     yum -y install git
+    yum -y install vim
     pip install easybuild==$EASYBUILD_VERSION
 
